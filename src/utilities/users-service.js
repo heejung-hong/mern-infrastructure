@@ -14,6 +14,13 @@ export async function signUp(userData) { // signUp waiting for token
   return getUser;
 }
 
+export async function logIn(credentials) { // signUp waiting for token
+  const token = await usersAPI.logIn(credentials);
+  localStorage.setItem('token', token);
+  // TODO: return user from token instead
+  return getUser;
+}
+
 export function logOut() {
   localStorage.removeItem('token');
 }
@@ -38,9 +45,3 @@ export function getUser() {
   return token ? JSON.parse(atob(token.split('.')[1])).user : null;
 }
 
-
-// export async function logIn(userData) { // signUp waiting for token
-//   const token = await usersAPI.logIn(userData);
-//   // TODO: return user from token instead
-//   return token;
-// }
