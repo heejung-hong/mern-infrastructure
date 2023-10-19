@@ -24,7 +24,8 @@ export default class SignUpForm extends Component {
       const {name, email, password} = this.state // destructuring state object
       const formData = {name, email, password};
       const user = await signUp(formData);
-      console.log(user);
+      // console.log(user);
+      this.props.setUser(user);
     } catch {
       // An error occurred
       // Probably due to a duplicate email.
